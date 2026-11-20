@@ -1,0 +1,62 @@
+== 1. 用户与基础设施 ==
+PASS  user create（provider 转小写）
+PASS  user resolve 幂等
+PASS  重复创建用户 -> DUPLICATE_USER
+PASS  init schema v2
+== 2. Task（items.type=task）==
+PASS  task create 完整字段
+PASS  task get 按 ID
+PASS  task list 状态筛选
+PASS  task list 关键词 + 优先级
+PASS  task update + 显式清空 due_at
+PASS  task complete 设置 completed_at
+PASS  task complete 幂等
+PASS  空标题拒绝
+PASS  特殊字符（SQL 安全）创建
+PASS  特殊字符原样保存
+PASS  task get 不存在 -> TASK_NOT_FOUND
+== 3. Schedule（items.type=event）==
+PASS  schedule create 完整字段
+PASS  schedule 区间相交查询
+PASS  schedule 区间外不返回
+PASS  end 早于 start 拒绝
+PASS  用 task 命令访问 event -> TASK_NOT_FOUND
+PASS  schedule get 不存在 -> SCHEDULE_NOT_FOUND
+== 4. Reminder（item 关联 / trigger / cancel）==
+PASS  reminder create 关联 item
+PASS  reminder list 按 item 筛选
+PASS  reminder trigger -> triggered
+PASS  reminder cancel -> cancelled（保留记录）
+PASS  关联不存在 item -> ITEM_NOT_FOUND
+PASS  删除待办后提醒保留且 item_id 为 NULL
+== 5. Transaction（人民币分、无币种）==
+PASS  transaction create 支出
+PASS  transaction create 收入
+PASS  summary 收支/净额
+PASS  summary 按类别统计
+PASS  负金额拒绝
+PASS  空范围 summary 为零值
+PASS  transaction delete
+== 6. Note（无标签）==
+PASS  note create 中文/引号/分号
+PASS  note 关键词查询
+PASS  note update 内容
+PASS  note 空内容拒绝
+PASS  note get 不存在 -> NOTE_NOT_FOUND
+== 7. 用户数据隔离 ==
+PASS  第二个用户看不到第一个用户的待办
+PASS  跨用户 get -> TASK_NOT_FOUND
+PASS  跨用户 note get -> NOTE_NOT_FOUND
+== 8. Agent 调用契约 ==
+PASS  stdin JSON 输入创建
+PASS  非法 JSON -> INVALID_INPUT
+PASS  stdout 单个 JSON 对象
+PASS  stdout 只有一行 JSON
+PASS  人类可读模式可运行
+== 9. 数据库可靠性 ==
+PASS  重复 init 不破坏数据
+PASS  重启后数据仍在（每次命令都是新进程）
+PASS  WAL 模式已启用
+PASS  表结构核对（6 表 / 8 索引 / schema_migrations.version,applied_at）
+
+==== 冒烟测试结果: PASS=51 FAIL=0 ====

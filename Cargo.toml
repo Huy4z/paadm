@@ -1,0 +1,25 @@
+[package]
+name = "paadm"
+version = "0.1.0"
+edition = "2024"
+description = "PAA personal data management CLI"
+license = "MIT"
+
+[dependencies]
+# CLI 参数解析
+clap = { version = "4", features = ["derive"] }
+# 结构化输入输出（供 Agent 调用）
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# SQLite 访问；bundled 让程序自带 SQLite，不依赖服务器安装 libsqlite3
+rusqlite = { version = "0.32", features = ["bundled"] }
+# 稳定唯一 ID
+uuid = { version = "1", features = ["v4"] }
+# ISO 8601 时间解析与格式化
+time = { version = "0.3", features = ["formatting", "parsing", "macros"] }
+# 统一错误类型（稳定的错误码）
+thiserror = "2"
+
+[dev-dependencies]
+# 测试用临时目录/临时数据库
+tempfile = "3"

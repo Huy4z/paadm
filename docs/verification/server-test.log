@@ -1,0 +1,245 @@
+   Compiling paadm v0.1.0 (~/paadm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.52s
+     Running unittests src/lib.rs (target/debug/build/paadm/1030e26a2a18d90c/out/paadm-1030e26a2a18d90c)
+
+running 3 tests
+test domain::reminder::tests::status_parse_is_strict ... ok
+test domain::reminder::tests::content_and_remind_at_are_required ... ok
+test domain::reminder::tests::status_roundtrip ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/build/paadm/e5fcce0acff6a721/out/paadm-e5fcce0acff6a721)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/integration.rs (target/debug/build/paadm/9f05d94577ee4bfb/out/integration-9f05d94577ee4bfb)
+
+running 35 tests
+test agent003_business_error_and_exit_code ... ok
+test agent001_agent002_create_and_list_contract ... ok
+test agent004_invalid_field_returns_validation_error ... ok
+test agent005_agent006_stdout_purity_with_stderr_logs ... ok
+test agent009_overlong_input_is_rejected ... ok
+test agent008_special_characters_in_arguments ... ok
+test cli001_help_lists_commands ... ok
+test agent010_invalid_optional_field_writes_nothing ... ok
+test cli002_version ... ok
+test cli003_unknown_command_fails_gracefully ... ok
+test cli004_missing_required_argument ... ok
+test cli005_success_outputs_single_json_object ... ok
+test cli006_failure_outputs_json_and_nonzero_exit ... ok
+test cli007_stdout_is_clean_in_json_mode ... ok
+test cli008_stdin_json_input ... ok
+test cli009_invalid_json_input_is_rejected ... ok
+test db001_first_run_initializes_database ... ok
+test cli010_database_path_configuration ... ok
+test db002_repeated_init_keeps_data ... ok
+test db003_data_persists_across_processes ... ok
+test db004_unwritable_database_path ... ok
+test db006_sql_injection_text_is_stored_as_data ... ok
+test item001_task_and_event_are_separated_by_type ... ok
+test rel006_database_isolation ... ok
+test rel005_domains_are_independent ... ok
+test sys001_concurrent_reads ... ok
+test sys002_concurrent_writes ... ok
+test sys004_abrupt_interruption_keeps_database_usable ... ok
+test sys007_empty_database_lists_are_empty_success ... ok
+test sys008_corrupt_database_file ... ok
+test user001_create_user ... ok
+test user002_duplicate_create_and_resolve ... ok
+test user003_unknown_or_missing_user ... ok
+test sys003_write_lock_waiting ... ok
+test user004_cross_user_data_isolation ... ok
+
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.19s
+
+     Running tests/note.rs (target/debug/build/paadm/f8730c77653eac07/out/note-f8730c77653eac07)
+
+running 25 tests
+test note_001_create_with_content_only ... ok
+test note_001_create_with_title ... ok
+test note_002_empty_content_rejected ... ok
+test note_002_missing_content_rejected ... ok
+test note_004_chinese_and_special_characters_preserved ... ok
+test note_003_long_text_saved_in_full ... ok
+test note_005_keyword_is_case_insensitive_for_ascii ... ok
+test note_005_keyword_matches_title_or_content ... ok
+test note_005_keyword_wildcards_are_literal ... ok
+test note_006_update_content_takes_effect ... ok
+test note_006_update_rejects_empty_content ... ok
+test note_006_update_only_provided_fields_and_clear_title ... ok
+test note_006_update_via_input_json ... ok
+test note_008_empty_id_is_invalid_argument ... ok
+test note_007_delete_record ... ok
+test note_008_get_missing_returns_note_not_found ... ok
+test note_create_input_json_invalid_json_rejected ... ok
+test note_create_input_json_missing_content_rejected ... ok
+test note_json_shape_is_stable ... ok
+test note_list_empty_is_success ... ok
+test note_list_by_created_at_range ... ok
+test note_list_rejects_invalid_time_filters ... ok
+test note_list_order_is_stable ... ok
+test note_requires_user_id ... ok
+test note_user_isolation ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.69s
+
+     Running tests/reminder.rs (target/debug/build/paadm/6210b7a14985d6e1/out/reminder-6210b7a14985d6e1)
+
+running 19 tests
+test rem_001_create_one_time_reminder ... ok
+test rel_002_update_task_title_keeps_reminder_link ... ok
+test rem_002_rel_001_create_linked_reminder ... ok
+test rem_003_empty_content_is_rejected ... ok
+test rem_004_invalid_remind_at_is_rejected ... ok
+test rem_005_invalid_status_filter_is_rejected ... ok
+test rem_007_update_content_and_clear_item_id ... ok
+test rem_006_list_all_and_time_range ... ok
+test rem_007_update_remind_at_keeps_other_fields ... ok
+test rem_008_cancel_reminder_keeps_record ... ok
+test rem_009_delete_reminder ... ok
+test rem_010_link_to_item_and_filter_by_item_id ... ok
+test rem_011_link_to_missing_item_is_rejected ... ok
+test rem_012_rel_003_delete_linked_task_sets_null ... ok
+test rem_014_duplicate_create_does_not_dedupe ... ok
+test rem_013_filter_by_status ... ok
+test rem_015_trigger_lifecycle ... ok
+test rem_016_cross_user_isolation ... ok
+test reminder_cli_supports_input_json ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.72s
+
+     Running tests/schedule.rs (target/debug/build/paadm/f0c1047ae1db26b8/out/schedule-f0c1047ae1db26b8)
+
+running 26 tests
+test sch_002_create_full_schedule ... ok
+test sch_001_create_minimal_schedule ... ok
+test sch_003_empty_title_rejected ... ok
+test sch_004_invalid_start_at_rejected ... ok
+test sch_005_end_before_start_rejected ... ok
+test sch_006_end_equal_start_rejected ... ok
+test sch_007_no_end_at_allowed ... ok
+test sch_008_list_by_date_returns_intersecting_schedules ... ok
+test sch_009_list_within_time_range ... ok
+test sch_010_update_time_and_location_keeps_other_fields ... ok
+test sch_012_get_missing_schedule_returns_not_found ... ok
+test sch_011_delete_schedule ... ok
+test sch_014_timezone_semantics_preserved ... ok
+test sch_013_boundary_instants_follow_half_open_rule ... ok
+test sch_015_update_with_clear_flags ... ok
+test sch_017_create_from_input_json ... ok
+test sch_016_list_sorted_by_start_instant ... ok
+test sch_019_invalid_end_at_rejected ... ok
+test sch_018_update_not_found_and_validation ... ok
+test sch_021_empty_list ... ok
+test sch_020_list_keyword_filter ... ok
+test sch_022_update_time_consistency ... ok
+test sch_023_user_isolation ... ok
+test sch_024_schedule_commands_ignore_tasks ... ok
+test sch_025_missing_user_id_is_rejected ... ok
+test sch_026_invalid_all_day_rejected ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.75s
+
+     Running tests/storage.rs (target/debug/build/paadm/10b11c68de28c7bf/out/storage-10b11c68de28c7bf)
+
+running 13 tests
+test db002_reopen_is_idempotent_and_keeps_data ... ok
+test db004_unwritable_path_returns_error ... ok
+test db001_first_open_initializes_new_schema ... ok
+test db007_transaction_rollback_leaves_no_partial_data ... ok
+test db005_upgrade_adds_indexes_and_keeps_data ... ok
+test delete_item_and_unlink_reminders_is_atomic ... ok
+test explicit_path_is_used_and_parent_created ... ok
+test fk_delete_user_cascades_business_data ... ok
+test items_check_constraints_enforced ... ok
+test reminder_item_fk_restricts_direct_item_delete ... ok
+test sys005_wal_and_foreign_keys_enabled ... ok
+test sys008_corrupt_database_returns_clear_error ... ok
+test sys006_backup_and_restore ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/task.rs (target/debug/build/paadm/b7d110f75bfcd961/out/task-b7d110f75bfcd961)
+
+running 38 tests
+test cli_004_create_without_title_is_rejected ... ok
+test cli_005_success_json_shape ... ok
+test cli_006_failure_json_shape ... ok
+test cli_009_invalid_stdin_json_is_rejected ... ok
+test cli_008_create_from_stdin_json ... ok
+test task_001_create_minimal_task ... ok
+test task_002_create_full_task ... ok
+test task_003_create_rejects_empty_title ... ok
+test task_004_create_rejects_whitespace_title ... ok
+test task_005_create_rejects_non_integer_priority ... ok
+test task_006_create_rejects_invalid_due_at ... ok
+test task_007_task_ids_are_unique ... ok
+test task_008_special_characters_title ... ok
+test task_010_get_task_by_id ... ok
+test task_009_list_all_tasks ... ok
+test task_011_get_missing_task_returns_not_found ... ok
+test task_013_list_filter_by_due_range ... ok
+test task_012_list_filter_by_status ... ok
+test task_014_empty_list ... ok
+test task_016_update_title ... ok
+test task_015_list_filter_by_keyword ... ok
+test task_017_update_due_at ... ok
+test task_018_clear_optional_fields ... ok
+test task_019_update_missing_task_returns_not_found ... ok
+test task_020_complete_task ... ok
+test task_021_complete_is_idempotent ... ok
+test task_023_update_refreshes_updated_at ... ok
+test task_022_cancel_task ... ok
+test task_024_update_only_provided_fields ... ok
+test task_026_delete_missing_task_returns_not_found ... ok
+test task_025_delete_existing_task ... ok
+test task_027_get_after_delete_returns_not_found ... ok
+test task_028_delete_twice_returns_not_found ... ok
+test task_029_list_filter_by_integer_priority ... ok
+test task_030_user_isolation ... ok
+test task_032_missing_user_id_is_rejected ... ok
+test task_031_task_commands_ignore_events ... ok
+test task_033_delete_clears_linked_reminder_in_transaction ... ok
+
+test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.37s
+
+     Running tests/transaction.rs (target/debug/build/paadm/e90a81bdb43e1108/out/transaction-e90a81bdb43e1108)
+
+running 24 tests
+test tx_002_create_income ... ok
+test tx_001_create_expense ... ok
+test tx_003_zero_amount_rejected ... ok
+test tx_004_negative_amount_rejected ... ok
+test tx_005_invalid_type_rejected ... ok
+test tx_006_missing_required_fields_rejected ... ok
+test tx_008_list_and_summary_by_category ... ok
+test tx_007_list_by_time_range ... ok
+test tx_010_update_amount ... ok
+test tx_009_summary_income_expense_not_mixed ... ok
+test tx_011_update_category ... ok
+test tx_012_delete_syncs_summary ... ok
+test tx_013_fractional_amount_no_float_error ... ok
+test tx_014_single_currency_rmb_no_currency_field ... ok
+test tx_extra_empty_database_summary_and_list ... ok
+test tx_extra_create_validation_time ... ok
+test tx_extra_get_not_found ... ok
+test tx_extra_filter_validation ... ok
+test tx_extra_input_json_create_and_update ... ok
+test tx_extra_list_ordering_by_utc ... ok
+test tx_extra_persistence_across_invocations ... ok
+test tx_extra_update_optional_fields_and_clear ... ok
+test tx_extra_summary_category_null_and_ordering ... ok
+test tx_extra_user_isolation ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.81s
+
+   Doc-tests paadm
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
