@@ -1,0 +1,18 @@
+# 统一换行符：仓库内一律 LF，避免 Windows / macOS 侧 checkout 后
+# 出现「整树已修改但内容相同」的 CRLF 假改动（见 AGENT.md / workspace.md）。
+* text=auto eol=lf
+
+# 二进制文件不参与文本转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+*.gz binary
+*.tgz binary
+*.zip binary
+*.pdf binary
